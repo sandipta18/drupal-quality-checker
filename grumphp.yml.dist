@@ -16,6 +16,7 @@ grumphp:
       blacklist:
         - "develop"
         - "master"
+        - "main"
     git_commit_message:
       allow_empty_message: false
       enforce_capitalized_subject: true
