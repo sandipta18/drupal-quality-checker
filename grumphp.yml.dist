@@ -4,14 +4,47 @@ grumphp:
     failed: vendor/innoraft/drupal-quality-checker/resources/ascii/sad.txt
     succeeded: vendor/innoraft/drupal-quality-checker/resources/ascii/happy.txt
   tasks:
-    phplint: ~
     yamllint: ~
-    composer: ~
     composer_normalize:
       indent_size: ~
       indent_style: ~
       verbose: false
     jsonlint: ~
+    git_branch_name:
+      whitelist:
+        - "/^[A-Z]+-(0|[1-9][0-9]*)$/"
+      blacklist:
+        - "develop"
+        - "master"
+        - "main"
+    git_commit_message:
+      allow_empty_message: false
+      enforce_capitalized_subject: true
+      enforce_no_subject_punctuations: false
+      enforce_no_subject_trailing_period: true
+      enforce_single_lined_subject: true
+      type_scope_conventions: []
+      max_body_width: 72
+      max_subject_width: 60
+      matchers:
+        Must contain JIRA issue number: /[A-Z]+-(0|[1-9][0-9]*)/
+      case_insensitive: true
+    twigcs:
+      severity: 'warning'
+      display: 'all'
+      ruleset: 'FriendsOfTwig\Twigcs\Ruleset\Official'
+      triggered_by: ['twig']
+      exclude: ['vendor/', 'web/core/']
+    phpstan:
+      memory_limit: "-1"
+      triggered_by:
+        - php
+        - module
+        - inc
+        - install
+        - test
+        - profile
+        - theme
     phpcpd:
       directory: ['./web/modules/custom']
     phpcs:
@@ -32,7 +65,9 @@ grumphp:
         - test
         - profile
         - theme
-        - css
-        - info
-        - txt
-        - md
+    eslint:
+      bin: "web/themes/custom/<theme_name>/node_modules/.bin/eslint"
+      config: ".eslintrc.json"
+    stylelint:
+      bin: "web/themes/custom/<theme_name>/node_modules/.bin/stylelint"
+      config: ".stylelintrc.json"
