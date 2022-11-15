@@ -25,7 +25,7 @@
     "require": {
         "drupal/coder": "^8.3",
         "ergebnis/composer-normalize": "^2.0",
-        "phpro/grumphp": "1.5",
+        "phpro/grumphp": "^1.5",
         "sebastian/phpcpd": "^6.0"
     },
     "config": {
