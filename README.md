@@ -10,8 +10,8 @@ This has been customised from [vijaycs85/drupal-quality-checker](https://packagi
 
 ## Install
 
-1. Add `innoraft/drupal-quality-checker` to `composer.json` or
-just run
+1. Add `innoraft/drupal-quality-checker` to `composer.json` or just run
+
     ```bash
     composer require --dev innoraft/drupal-quality-checker
     ```
