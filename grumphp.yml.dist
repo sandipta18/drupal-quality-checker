@@ -12,7 +12,7 @@ grumphp:
     jsonlint: ~
     git_branch_name:
       whitelist:
-        - "/^[A-Z]+-(0|[1-9][0-9]*)$/"
+        - "/^[A-Z]+-(0|[1-9][0-9]*)(-([a-z]|[A-Z])+)?$/"
       blacklist:
         - "develop"
         - "master"
@@ -21,13 +21,13 @@ grumphp:
       allow_empty_message: false
       enforce_capitalized_subject: true
       enforce_no_subject_punctuations: false
-      enforce_no_subject_trailing_period: true
+      enforce_no_subject_trailing_period: false
       enforce_single_lined_subject: true
       type_scope_conventions: []
-      max_body_width: 72
-      max_subject_width: 60
+      max_body_width: 0
+      max_subject_width: 0
       matchers:
-        Must contain JIRA issue number: /[A-Z]+-(0|[1-9][0-9]*)/
+        Must contain JIRA issue number: '/^[A-Z]+-(0|[1-9][0-9]*)+: ([a-z A-Z.])+$/'
       case_insensitive: true
     twigcs:
       severity: 'warning'
@@ -46,7 +46,7 @@ grumphp:
         - profile
         - theme
     phpcpd:
-      directory: ['./web/modules/custom']
+      directory: ['./web/modules/custom', './web/themes/custom']
     phpcs:
       standard:
         - vendor/drupal/coder/coder_sniffer/Drupal
