@@ -12,7 +12,7 @@ grumphp:
     jsonlint: ~
     git_branch_name:
       whitelist:
-        - "/^[A-Z]+-(0|[1-9][0-9]*)(-([a-z]|[A-Z])+)?$/"
+        - "/^[A-Z]+-(0|[1-9][0-9]*)$/"
       blacklist:
         - "develop"
         - "master"
