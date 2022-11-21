@@ -25,8 +25,12 @@
     "require": {
         "drupal/coder": "^8.3",
         "ergebnis/composer-normalize": "^2.0",
+        "friendsoftwig/twigcs": "^6.0",
+        "palantirnet/drupal-rector": "^0.13.1",
         "phpro/grumphp": "^1.5",
-        "sebastian/phpcpd": "^6.0"
+        "phpstan/phpstan": "^1.9",
+        "sebastian/phpcpd": "^6.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "config": {
         "allow-plugins": {
@@ -34,11 +38,5 @@
             "ergebnis/composer-normalize": true,
             "phpro/grumphp": true
         }
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.7",
-        "phpstan/phpstan": "^1.9",
-        "friendsoftwig/twigcs": "^6.0",
-        "palantirnet/drupal-rector": "^0.13.1"
     }
 }
