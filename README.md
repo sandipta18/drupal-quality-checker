@@ -30,7 +30,6 @@ That's it. Now, all tasks (listed below) run on every `git commit`.
 4. [Composer](https://github.com/composer/composer)
 5. [Composer Normalize](https://github.com/ergebnis/composer-normalize)
 6. [JSONLint](https://jsonlint.com/)
-7. [PHP Copy/Paste Detector (CPD)](https://github.com/sebastianbergmann/phpcpd)
 
 Long list of additional checks/validators available [here](https://github.com/phpro/grumphp/blob/master/doc/tasks.md#tasks-1).
 
