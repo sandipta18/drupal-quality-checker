@@ -45,8 +45,6 @@ grumphp:
         - test
         - profile
         - theme
-    phpcpd:
-      directory: ['./web/modules/custom', './web/themes/custom']
     phpcs:
       standard:
         - vendor/drupal/coder/coder_sniffer/Drupal
