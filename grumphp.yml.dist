@@ -69,3 +69,21 @@ grumphp:
     stylelint:
       bin: "web/themes/custom/<theme_name>/node_modules/.bin/stylelint"
       config: ".stylelintrc.json"
+    trufflehog:
+      command: 'trufflehog git file://. --since-commit HEAD --fail'
+      triggered_by:
+        - php
+        - module
+        - inc
+        - install
+        - test
+        - profile
+        - theme
+
+services:
+  Innoraft\QualityChecker\Trufflehog\SecurityLeaks:
+    arguments:
+      - '@process_builder'
+      - '@formatter.raw_process'
+    tags:
+        - {name: grumphp.task, task: trufflehog}

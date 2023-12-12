@@ -30,6 +30,7 @@ That's it. Now, all tasks (listed below) run on every `git commit`.
 4. [Composer](https://github.com/composer/composer)
 5. [Composer Normalize](https://github.com/ergebnis/composer-normalize)
 6. [JSONLint](https://jsonlint.com/)
+7. [Trufflehog](https://trufflesecurity.com/trufflehog/)
 
 Long list of additional checks/validators available [here](https://github.com/phpro/grumphp/blob/master/doc/tasks.md#tasks-1).
 
@@ -63,3 +64,39 @@ Long list of additional checks/validators available [here](https://github.com/ph
 3. Update bin key for stylelint task under grumphp.yml file with relative address to stylelint's bin file.
 
     Example: if your theme name is `drupal_theme` then change it to `web/themes/custom/drupal_theme/node_modules/.bin/stylelint`
+
+## Trufflehog task Setup
+
+1. Create two folders at project's root level `tasks` & `scripts`
+
+2. Now run this command at project's root directory
+    ```bash
+    cp vendor/innoraft/drupal-quality-checker/src/SecurityLeaks.php tasks
+    ```
+    ```bash
+    cp vendor/innoraft/drupal-quality-checker/scripts/install_trufflehog.sh scritps
+    ```
+
+3. Now add the following code in your `composer.json` file which is present at project's root directory. ( For reference you can check `composer.json` file of this package )
+    ```bash
+    "autoload": {
+        "psr-4": {
+            "GrumPHP\\CustomTask\\Trufflehog\\": "tasks"
+        }
+    },
+    ```
+    Once the code is added in `composer.json` then execute this command
+    ```bash
+    composer dump-autoload
+    ```
+4. Install `trufflehog` ( If not already install ). You can execute the following command to achieve the same.
+    ```bash
+    chmod +x scripts/install_trufflehog.sh
+    ```
+    ```bash
+    bash scripts/install_trufflehog.sh
+    ```
+
+5. Please check and confirm if your `grumphp.yml` is updated with `vendor/innoraft/drupal-quality-checker/grumphp.yml.dist` ( Check and confirm if trufflehog tasks & service attribute is added )
+
+6. `Trufflehog` is now ready to sniff your secrets `:)`
