@@ -71,17 +71,17 @@ Long list of additional checks/validators available [here](https://github.com/ph
 
 2. Now run this command at project's root directory
     ```bash
-    cp vendor/innoraft/drupal-quality-checker/src/SecurityLeaks.php tasks
+    cp vendor/innoraft/drupal-quality-checker/tasks/SecurityLeaks.php tasks
     ```
     ```bash
-    cp vendor/innoraft/drupal-quality-checker/scripts/install_trufflehog.sh scritps
+    cp vendor/innoraft/drupal-quality-checker/scripts/install_trufflehog.sh scripts
     ```
 
 3. Now add the following code in your `composer.json` file which is present at project's root directory. ( For reference you can check `composer.json` file of this package )
     ```bash
     "autoload": {
         "psr-4": {
-            "GrumPHP\\CustomTask\\Trufflehog\\": "tasks"
+            "Innoraft\\QualityChecker\\Trufflehog\\": "tasks"
         }
     },
     ```
@@ -97,6 +97,6 @@ Long list of additional checks/validators available [here](https://github.com/ph
     bash scripts/install_trufflehog.sh
     ```
 
-5. Please check and confirm if your `grumphp.yml` is updated with `vendor/innoraft/drupal-quality-checker/grumphp.yml.dist` ( Check and confirm if trufflehog tasks & service attribute is added )
+5. Please check and confirm if your `grumphp.yml` is updated with `vendor/innoraft/drupal-quality-checker/grumphp.yml.dist` ( Check and confirm if trufflehog tasks & service attribute is added in `grumphp.yml` file )
 
 6. `Trufflehog` is now ready to sniff your secrets `:)`
