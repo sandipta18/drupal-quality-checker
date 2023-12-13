@@ -42,19 +42,5 @@
             "ergebnis/composer-normalize": true,
             "phpro/grumphp": true
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "@install-trufflehog",
-            "composer dump-autoload"
-        ],
-        "post-update-cmd": [
-            "@install-trufflehog",
-            "composer dump-autoload"
-        ],
-        "install-trufflehog": [
-            "chmod +x scripts/install_trufflehog.sh",
-            "bash scripts/install_trufflehog.sh"
-        ]
     }
 }
