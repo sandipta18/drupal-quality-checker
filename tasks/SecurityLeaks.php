@@ -24,10 +24,8 @@ class SecurityLeaks extends AbstractExternalTask {
     $resolver = new OptionsResolver();
     $resolver->setDefaults([
       'command' => '',
-      'triggered_by' => ['php'],
     ]);
 
-    $resolver->addAllowedTypes('triggered_by', ['array']);
     $resolver->addAllowedTypes('command', ['string']);
 
     return $resolver;
@@ -45,7 +43,7 @@ class SecurityLeaks extends AbstractExternalTask {
    */
   public function run(ContextInterface $context): TaskResultInterface {
     $config = $this->getConfig()->getOptions();
-    $files = $context->getFiles()->extensions($config['triggered_by']);
+    $files = $context->getFiles();
 
     if (0 === \count($files)) {
       return TaskResult::createSkipped($this, $context);

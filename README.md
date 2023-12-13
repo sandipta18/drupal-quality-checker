@@ -67,7 +67,7 @@ Long list of additional checks/validators available [here](https://github.com/ph
 
 ## Trufflehog task Setup
 
-1. Create a new folder at project's root level `tasks`
+1. Create a new folder `tasks` at project's root level.
 
 2. Now run this command at project's root directory
     ```bash

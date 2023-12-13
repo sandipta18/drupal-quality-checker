@@ -70,15 +70,7 @@ grumphp:
       bin: "web/themes/custom/<theme_name>/node_modules/.bin/stylelint"
       config: ".stylelintrc.json"
     trufflehog:
-      command: 'trufflehog git file://. --since-commit HEAD --fail'
-      triggered_by:
-        - php
-        - module
-        - inc
-        - install
-        - test
-        - profile
-        - theme
+      command: 'trufflehog git file://. --max-depth=1 --fail'
 
 services:
   Innoraft\QualityChecker\Trufflehog\SecurityLeaks:
