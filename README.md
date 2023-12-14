@@ -30,6 +30,7 @@ That's it. Now, all tasks (listed below) run on every `git commit`.
 4. [Composer](https://github.com/composer/composer)
 5. [Composer Normalize](https://github.com/ergebnis/composer-normalize)
 6. [JSONLint](https://jsonlint.com/)
+7. [Trufflehog](https://trufflesecurity.com/trufflehog/)
 
 Long list of additional checks/validators available [here](https://github.com/phpro/grumphp/blob/master/doc/tasks.md#tasks-1).
 
@@ -63,3 +64,33 @@ Long list of additional checks/validators available [here](https://github.com/ph
 3. Update bin key for stylelint task under grumphp.yml file with relative address to stylelint's bin file.
 
     Example: if your theme name is `drupal_theme` then change it to `web/themes/custom/drupal_theme/node_modules/.bin/stylelint`
+
+## Trufflehog task Setup
+
+1. Create a new folder `tasks` at project's root level.
+
+2. Now run this command at project's root directory
+    ```bash
+    cp vendor/innoraft/drupal-quality-checker/tasks/SecurityLeaks.php tasks
+    ```
+
+3. Now add the following code in your `composer.json` file which is present at project's root directory. ( For reference you can check `composer.json` file of this package )
+    ```bash
+    "autoload": {
+        "psr-4": {
+            "Innoraft\\QualityChecker\\Trufflehog\\": "tasks"
+        }
+    },
+    ```
+    Once the code is added in `composer.json` then execute this command
+    ```bash
+    composer dump-autoload
+    ```
+4. Install `trufflehog` ( If not already install ). You can execute the following command to achieve the same.
+    ```bash
+    curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b $HOME/.local/bin
+    ```
+
+5. Please check and confirm if your `grumphp.yml` is updated with `vendor/innoraft/drupal-quality-checker/grumphp.yml.dist` ( Check and confirm if trufflehog tasks & service attribute is added in `grumphp.yml` file )
+
+6. `Trufflehog` is now ready to sniff your secrets `:)`
