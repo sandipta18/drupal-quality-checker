@@ -46,7 +46,11 @@ Long list of additional checks/validators available [here](https://github.com/ph
     ```bash
     cp vendor/innoraft/drupal-quality-checker/eslintrc.json.dist .eslintrc.json
     ```
-3. Update bin key for eslint task under grumphp.yml file with relative address to eslint's bin file.
+    For multisite run the following command
+   ```bash
+    cp vendor/innoraft/drupal-quality-checker/eslintrc.json.dist docroot/sites/<sitename>/themes/custom/<themename>/.eslintrc.json
+    ```
+4. Update bin key for eslint task under grumphp.yml file with relative address to eslint's bin file.
 
     Example: if your theme name is `drupal_theme` then change it to `web/themes/custom/drupal_theme/node_modules/.bin/eslint`
 
@@ -61,7 +65,15 @@ Long list of additional checks/validators available [here](https://github.com/ph
     ```bash
     cp vendor/innoraft/drupal-quality-checker/stylelintrc.json.dist .stylelintrc.json
     ```
-3. Update bin key for stylelint task under grumphp.yml file with relative address to stylelint's bin file.
+    For multisite run the following command
+   ```bash
+    cp vendor/innoraft/drupal-quality-checker/eslintrc.json.dist docroot/sites/<sitename>/themes/custom/<themename>/.stylelintrc.json
+    ```
+3. For multisite run the following command
+    ```bash
+    npm install stylelint-config-standard
+    ```
+4. Update bin key for stylelint task under grumphp.yml file with relative address to stylelint's bin file.
 
     Example: if your theme name is `drupal_theme` then change it to `web/themes/custom/drupal_theme/node_modules/.bin/stylelint`
 
