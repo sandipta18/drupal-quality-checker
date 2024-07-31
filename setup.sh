@@ -1,15 +1,16 @@
 #!/bin/bash
 
-
+read -p "Enter the base directory (e.g., docroot, web, webroot): " base_dir
 read -p "Enter the site name: " site_name
 read -p "Enter the theme name: " theme_name
 
 
-BASE_DIR="docroot/sites/$site_name/themes/custom/$theme_name"
+BASE_DIR="$base_dir/sites/$site_name/themes/custom/$theme_name"
 ORIGINAL_DIR=$(pwd)
 
 
-lando composer require --dev innoraft/drupal-quality-checker
+composer require --dev innoraft/drupal-quality-checker
+
 
 cd "$BASE_DIR" || { echo "Base directory not found"; exit 1; }
 
@@ -39,6 +40,7 @@ else
   exit 1
 fi
 
+
 if [ -f "$SRC_STYLELINTRC_PATH" ]; then
   cp "$SRC_STYLELINTRC_PATH" "$DEST_STYLELINTRC_PATH"
   echo "Copied $SRC_STYLELINTRC_PATH to $DEST_STYLELINTRC_PATH"
@@ -60,11 +62,12 @@ else
   exit 1
 fi
 
+
 if [ -f "$DEST_GRUMPHP_PATH" ]; then
-  sed -i "s|bin: \"web/themes/custom/<theme_name>/node_modules/.bin/eslint\"|bin: \"docroot/sites/$site_name/themes/custom/$theme_name/node_modules/.bin/eslint\"|" "$DEST_GRUMPHP_PATH"
-  sed -i "s|config: \".eslintrc.json\"|config: \"docroot/sites/$site_name/themes/custom/$theme_name/.eslintrc.json\"|" "$DEST_GRUMPHP_PATH"
-  sed -i "s|bin: \"web/themes/custom/<theme_name>/node_modules/.bin/stylelint\"|bin: \"docroot/sites/$site_name/themes/custom/$theme_name/node_modules/.bin/stylelint\"|" "$DEST_GRUMPHP_PATH"
-  sed -i "s|config: \".stylelintrc.json\"|config: \"docroot/sites/$site_name/themes/custom/$theme_name/.stylelintrc.json\"|" "$DEST_GRUMPHP_PATH"
+  sed -i "s|bin: \"web/themes/custom/<theme_name>/node_modules/.bin/eslint\"|bin: \"$base_dir/sites/$site_name/themes/custom/$theme_name/node_modules/.bin/eslint\"|" "$DEST_GRUMPHP_PATH"
+  sed -i "s|config: \".eslintrc.json\"|config: \"$base_dir/sites/$site_name/themes/custom/$theme_name/.eslintrc.json\"|" "$DEST_GRUMPHP_PATH"
+  sed -i "s|bin: \"web/themes/custom/<theme_name>/node_modules/.bin/stylelint\"|bin: \"$base_dir/sites/$site_name/themes/custom/$theme_name/node_modules/.bin/stylelint\"|" "$DEST_GRUMPHP_PATH"
+  sed -i "s|config: \".stylelintrc.json\"|config: \"$base_dir/sites/$site_name/themes/custom/$theme_name/.stylelintrc.json\"|" "$DEST_GRUMPHP_PATH"
   echo "Updated $DEST_GRUMPHP_PATH with the correct paths"
 else
   echo "$DEST_GRUMPHP_PATH not found, cannot update paths"
@@ -96,7 +99,7 @@ else
 fi
 
 
-lando composer dump-autoload
+composer dump-autoload
 
 
 curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b $HOME/.local/bin
