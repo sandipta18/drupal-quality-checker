@@ -36,33 +36,34 @@ Long list of additional checks/validators available [here](https://github.com/ph
 
 ## To automatically setup all the packages, follow the below steps:
 
-1. Download the [setup.sh](setup.sh) file and place it outside the docroot.
-2. Update Line 12 of setup.sh having the command ``composer require --dev innoraft/drupal-quality-checker``. Use the appropriate environment for your setup. For example, if you are working with Lando, 
+1. For a single-site setup use [setup.sh](setup.sh) and for a **multisite** setup use [multisite-setup.sh](multisite-setup.sh) .
+2. Download the [setup.sh](setup.sh)/[multisite-setup.sh](multisite-setup.sh) file and place it outside the docroot.
+3. Update **Line 9 of setup.sh / Line 12 of multisite-setup.sh** having the command ``composer require --dev innoraft/drupal-quality-checker``. Use the appropriate environment for your setup. For example, if you are working with Lando, 
    use ``lando composer require --dev innoraft/drupal-quality-checker``. 
-3. Update Line 102 of setup.sh having the command ``composer dump-autoload``. Use the appropriate environment for your setup. For example, if you are working with Lando, 
+4. Update **Line 86 of setup.sh / Line 102 of multisite-setup.sh** having the command ``composer dump-autoload``. Use the appropriate environment for your setup. For example, if you are working with Lando, 
    use ``lando composer dump-autoload``. 
-4. From outside the docroot run this command that will make the bash script executable
+5. From outside the docroot run this command that will make the bash script executable
 
    ```bash
    chmod +x setup.sh
    ```
-5. To execute the bash script run this command from outside the docroot 
+6. To execute the bash script run this command from outside the docroot 
 
    ```bash
    ./setup.sh
    ```
-6. After executing the script, a prompt will appear asking for the base directory name , site name and custom theme name, which need to be entered
+7. After executing the script, a prompt will appear asking for the base directory name , site name and custom theme name, which need to be entered
    ![cmd](https://github.com/user-attachments/assets/7fdb6c2e-843b-44a9-9f28-08e8f2470e8f)
 
-7. Few other prompts will appear where consent is needed to download the required package for the configuration
+8. Few other prompts will appear where consent is needed to download the required package for the configuration
 
    ![image](https://github.com/user-attachments/assets/e7a904dc-90a8-41de-97cf-1fa2c4129dfc)
 
-8. When prompted for tasks to run, select any option, as grumphp.yml is already included in the package and will be used for setup, making this selection less critical:
+9. When prompted for tasks to run, select any option, as grumphp.yml is already included in the package and will be used for setup, making this selection less critical:
 
    ![image](https://github.com/user-attachments/assets/930fce63-51c8-4ff0-951c-61dc8644c1f9)
 
-9. After this, please wait for some time for the script to execute and the setup to be completed.
+10. After this, please wait for some time for the script to execute and the setup to be completed.
 
 
 ## Incase you want to install them individually, follow the below steps:
@@ -79,7 +80,7 @@ Long list of additional checks/validators available [here](https://github.com/ph
     ```bash
     cp vendor/innoraft/drupal-quality-checker/eslintrc.json.dist .eslintrc.json
     ```
-    For multisite run the following command
+    For **multisite** run the following command
    ```bash
     cp vendor/innoraft/drupal-quality-checker/eslintrc.json.dist docroot/sites/<sitename>/themes/custom/<themename>/.eslintrc.json
     ```
@@ -98,11 +99,11 @@ Long list of additional checks/validators available [here](https://github.com/ph
     ```bash
     cp vendor/innoraft/drupal-quality-checker/stylelintrc.json.dist .stylelintrc.json
     ```
-    For multisite run the following command
+    For **multisite** run the following command
    ```bash
     cp vendor/innoraft/drupal-quality-checker/stylelintrc.json.dist docroot/sites/<sitename>/themes/custom/<themename>/.stylelintrc.json
     ```
-3. For multisite run the following command
+3. For **multisite** run the following command
     ```bash
     npm install stylelint-config-standard
     ```
